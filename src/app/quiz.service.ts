@@ -277,4 +277,7 @@ export class QuizService {
     return this.quizData;
   };
 
+  getQuizDataNoImage() {
+    return this.quizData.filter((question) => !question.image);
+  }
 }

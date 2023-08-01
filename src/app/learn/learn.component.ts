@@ -12,9 +12,10 @@ export class LearnComponent {
 
   questions: Question[];
   currentQuestionIndex = 0;
+  isSwitch = false;
 
   constructor() {
-    this.questions = this.quizService.getQuizData();
+    this.questions = this.quizService.getQuizDataNoImage();
   }
 
   getCorrectChoices() {
@@ -33,7 +34,11 @@ export class LearnComponent {
     }
   }
 
-  onClickList() {
-    return this.questions, this.getCorrectChoices();
+  clickEQ() {
+    return this.isSwitch = true;
+  }
+
+  clickQL() {
+    return this.isSwitch = false;
   }
 }

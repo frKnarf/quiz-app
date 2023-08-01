@@ -1,11 +1,13 @@
 <div class="main vertical-center">
     <div class="container" style="max-width: 800px;">
         <div class="btn-group" role="group" aria-label="Basic outlined example">
-            <button type="button" class="btn btn-outline-primary">Each Question</button>
-            <button type="button" class="btn btn-outline-primary" (click)="onClickList()">Question List</button>
+            <button type="button" class="btn" [ngClass]="{'btn-primary': !isSwitch, 'btn-outline-primary': isSwitch}"
+                (click)="clickEQ()">Each Question</button>
+            <button type=" button" class="btn" [ngClass]="{'btn-primary': isSwitch, 'btn-outline-primary': !isSwitch}"
+                (click)="clickQL()">Question List</button>
         </div>
 
-        <ng-template [ngIf]="onClickList" , [ngIfElse]="main">
+        <ng-template [ngIf]="!isSwitch" , [ngIfElse]="showList">
             <div class="head mb-6">
                 <h2 class="mt-5 mb-2" style="font-size: 20px;">{{currentQuestionIndex + 1}} of {{questions.length}}</h2>
                 <h3 class="mt-3"><b>Q: </b>{{questions[currentQuestionIndex].text}}</h3>
@@ -25,8 +27,19 @@
             </div>
         </ng-template>
 
-        <ng-template #main>
-
+        <ng-template #showList>
+            <div class="container score mt-5" style="max-width: 800px">
+                <ul>
+                    <li *ngFor="let ques of questions">
+                        <div class="row">
+                            <div class="col-8 mb-3 white-text">{{ ques.text }}</div>
+                            <div class="col-md-4 mb-3 white-text anwser">
+                                👍 {{ getCorrectChoices() }}
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </ng-template>
     </div>
 </div>
