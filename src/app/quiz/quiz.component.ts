@@ -11,13 +11,16 @@ export class QuizComponent {
   audio = new Audio();
   quizService: QuizService = inject(QuizService);
 
-  questions: Question[];
+  questions: Question[] = [];
   currentQuestionIndex = 0;
   isEnd = false;
   score = 0;
 
   constructor() {
-    this.questions = this.quizService.getQuizData();
+    this.quizService.getQuizData().then((questions) => {
+      this.questions = questions;
+    });
+
     this.audio.src = '../assets/audio/mixkit-arcade-game-jump-coin-216.wav'
     this.newQuiz();
   }

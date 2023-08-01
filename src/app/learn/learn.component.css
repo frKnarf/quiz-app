@@ -21,17 +21,25 @@
 }
 
 .btn-group {
-    margin-left: 30%;
     width: 40%;
+    margin-left: 30%;
 }
 
 .head {
     height: 15vh;
 }
 
+.container-EQ {
+    height: 30vh;
+}
+
+.container-list {
+    height: 30vh;
+}
+
 button {
-    margin-top: 50px;
     width: 100%;
+    margin-top: 50px;
 }
 
 h2 {

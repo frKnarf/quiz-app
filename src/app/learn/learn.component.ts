@@ -10,16 +10,22 @@ import { Choice, Question } from '../question';
 export class LearnComponent {
   quizService: QuizService = inject(QuizService);
 
-  questions: Question[];
+  questions: Question[] = [];
   currentQuestionIndex = 0;
   isSwitch = false;
 
   constructor() {
-    this.questions = this.quizService.getQuizDataNoImage();
+    this.quizService.getQuizData().then((questions) => {
+      this.questions = questions;
+    });
   }
 
   getCorrectChoices() {
     return this.questions[this.currentQuestionIndex].choices.filter(choice => choice.isAnswer);
+  }
+
+  correctAnswer(elm: Choice[]) {
+    return elm.find(value => value.isAnswer)?.text || null;
   }
 
   onClickNext() {
@@ -35,10 +41,10 @@ export class LearnComponent {
   }
 
   clickEQ() {
-    return this.isSwitch = true;
+    return this.isSwitch = false;
   }
 
   clickQL() {
-    return this.isSwitch = false;
+    return this.isSwitch = true;
   }
 }

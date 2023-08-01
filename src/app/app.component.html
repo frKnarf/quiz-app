@@ -5,16 +5,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="../app/learn/learn.component.html">Learn</a>
+                    <a [routerLink]="['/learn']" class="nav-link active" [class.active]="activeMenu === 0"
+                        (click)="activeMenu = 0" href="#">Learn</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="../app/quiz/quiz.component.html">Quiz</a>
+                    <a [routerLink]="['/quiz']" class="nav-link active" [class.active]="activeMenu === 1"
+                        (click)="activeMenu = 1" href="#">Quiz</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="../app/about/about.component.html">About</a>
+                    <a [routerLink]="['/about']" class="nav-link active" [class.active]="activeMenu === 2"
+                        (click)="activeMenu = 2" href="#">About</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
-<app-learn></app-learn>
+<router-outlet></router-outlet>
