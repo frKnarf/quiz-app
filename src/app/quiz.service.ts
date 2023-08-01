@@ -276,4 +276,5 @@ export class QuizService {
   getQuizData() {
     return this.quizData;
   };
+
 }
